@@ -11,11 +11,13 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.List;
+//import java.nio.file.Files;
+//import java.util.List;
 import java.util.Random;
 
 /**
@@ -41,8 +43,18 @@ public class BadIOGUI {
     public BadIOGUI() {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
-        final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
+        //final JButton write = new JButton("Write on file");
+        //canvas.add(write, BorderLayout.CENTER);
+        //frame.setContentPane(canvas);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        final JPanel second = new JPanel();
+        second.setLayout(new BoxLayout(second, BoxLayout.X_AXIS));
+        canvas.add(second, BorderLayout.CENTER);
+        final JButton write = new JButton("Click to write on file");
+        final JButton read = new JButton("Read");
+        second.add(write);
+        second.add(read);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
@@ -58,11 +70,23 @@ public class BadIOGUI {
                  * operation. I/O operations may take a long time, during which
                  * your UI becomes completely unresponsive.
                  */
-                try (PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) {
+                try(PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) {
                     ps.print(randomGenerator.nextInt());
-                } catch (IOException e1) {
+                } catch(IOException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
                     e1.printStackTrace(); // NOPMD: allowed as this is just an exercise
+                }
+            }
+        });
+
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                try(InputStream file = new FileInputStream(PATH)){
+                    System.out.println(file.read()); //NO PMD
+                } catch(IOException e2) {
+                    JOptionPane.showMessageDialog(frame, e2, "Error", JOptionPane.ERROR_MESSAGE);
+                    e2.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }
             }
         });
@@ -87,6 +111,7 @@ public class BadIOGUI {
          * on screen. Results may vary, but it is generally the best choice.
          */
         frame.setLocationByPlatform(true);
+        frame.pack();
         /*
          * OK, ready to push the frame onscreen
          */

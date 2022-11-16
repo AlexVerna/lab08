@@ -70,9 +70,9 @@ public class BadIOGUI {
                  * operation. I/O operations may take a long time, during which
                  * your UI becomes completely unresponsive.
                  */
-                try(PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) {
+                try (PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) {
                     ps.print(randomGenerator.nextInt());
-                } catch(IOException e1) {
+                } catch (IOException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
                     e1.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }
@@ -82,9 +82,9 @@ public class BadIOGUI {
         read.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                try(InputStream file = new FileInputStream(PATH)){
-                    System.out.println(file.read()); //NO PMD
-                } catch(IOException e2) {
+                try (InputStream file = new FileInputStream(PATH)) {
+                    System.out.println(file.read()); //NOPMD
+                } catch (IOException e2) {
                     JOptionPane.showMessageDialog(frame, e2, "Error", JOptionPane.ERROR_MESSAGE);
                     e2.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }

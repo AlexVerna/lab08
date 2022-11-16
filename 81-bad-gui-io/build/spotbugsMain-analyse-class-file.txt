@@ -1,0 +1,3 @@
+/Users/alessandroverna/Documents/Universita/Secondo_Anno/ProgrammazioneAdOggetti/Laboratorio/lab08/81-bad-gui-io/build/classes/java/main/it/unibo/mvc/BadIOGUI$1.class
+/Users/alessandroverna/Documents/Universita/Secondo_Anno/ProgrammazioneAdOggetti/Laboratorio/lab08/81-bad-gui-io/build/classes/java/main/it/unibo/mvc/BadIOGUI$2.class
+/Users/alessandroverna/Documents/Universita/Secondo_Anno/ProgrammazioneAdOggetti/Laboratorio/lab08/81-bad-gui-io/build/classes/java/main/it/unibo/mvc/BadIOGUI.class

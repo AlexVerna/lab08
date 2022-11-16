@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-//import java.nio.file.Files;
+import java.nio.file.Files;
 //import java.util.List;
 import java.util.Random;
 
@@ -83,7 +83,7 @@ public class BadIOGUI {
             @Override
             public void actionPerformed(final ActionEvent e) {
                 try (InputStream file = new FileInputStream(PATH)) {
-                    System.out.println(file.read()); //NOPMD
+                    System.out.println(Files.readAllLines(new File(PATH).toPath())); //NOPMD
                 } catch (IOException e2) {
                     JOptionPane.showMessageDialog(frame, e2, "Error", JOptionPane.ERROR_MESSAGE);
                     e2.printStackTrace(); // NOPMD: allowed as this is just an exercise
